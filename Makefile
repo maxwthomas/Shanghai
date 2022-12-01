@@ -1,6 +1,6 @@
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -Wpedantic
-GTESTFLAGS := -lgtest -lgtest_main
+GTESTFLAGS := -lgtest
 
 
 docker-build:
@@ -9,11 +9,11 @@ docker-build:
 docker-run:
 	docker run --rm -it -v $(PWD):/home -w /home shanghai
 
-TestCard.o: TestCard.cpp Card.hpp .PHONY
-	$(CXX) $(CXXFLAGS) $(GTESTFLAGS) TestCard.cpp -o TestCard.o
+RunTests: TestCard.hpp Card.hpp .PHONY
+	$(CXX) $(CXXFLAGS) $(GTESTFLAGS) RunTests.cpp -o RunTests
 
-test: TestCard.o
-	./TestCard.o
+test: RunTests
+	./RunTests
 
 clean:
 	rm -f *.o

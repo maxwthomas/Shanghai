@@ -11,8 +11,8 @@ class Card
         enum class Rank { Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Joker };
 
     private:
-        Suit suit;
-        Rank rank;
+        const Suit suit;
+        const Rank rank;
 
     public:
         Card(Suit _suit, Rank _rank):
