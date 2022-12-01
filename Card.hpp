@@ -1,3 +1,4 @@
+// Card.hpp
 #pragma once
 
 #include <iostream>
@@ -25,11 +26,13 @@ public:
             throw std::invalid_argument("Joker Suit can only go with Joker Rank.");
     }
 
+    // Need to explicitly define bc of member variables not standard copyable
     Card(const Card& c):
         suit(c.suit),
         rank(c.rank)
     {}
 
+    // Need to explicitly define bc of member variables not standard copyable
     Card& operator=(const Card& c)
     {
         suit = c.suit;
