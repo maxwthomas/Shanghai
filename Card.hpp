@@ -1,12 +1,13 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <stdexcept>
 
 
 class Card
 {
     public:
-        enum class Suit { Spades, Clubs, Diamonds, Hearts };
+        enum class Suit { Spades, Clubs, Diamonds, Hearts, Joker };
         enum class Rank { Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Joker };
 
     private:
@@ -17,7 +18,10 @@ class Card
         Card(Suit _suit, Rank _rank):
             suit(_suit),
             rank(_rank)
-        {}
+        {
+            if ((suit == Suit::Joker && rank != Rank::Joker) || (suit != Suit::Joker && rank == Rank::Joker))
+                throw std::invalid_argument("Joker Suit can only go with Joker Rank.");
+        }
 
         friend bool operator==(const Card& lhs, const Card& rhs)
         {

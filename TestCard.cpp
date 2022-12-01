@@ -12,6 +12,35 @@ TEST(CardCreate, Simple)
     ASSERT_NE(&c, nullptr);
 }
 
+TEST(CardCreate, Joker)
+{
+    Card c = Card(Card::Suit::Joker, Card::Rank::Joker);
+    ASSERT_NE(&c, nullptr);
+}
+
+TEST(CardCreate, BadJoker)
+{
+    try
+    {
+        Card(Card::Suit::Spades, Card::Rank::Joker);
+        ASSERT_EQ(true, false);
+    }
+    catch (const std::invalid_argument& e)
+    {
+        ;
+    }
+
+    try
+    {
+        Card(Card::Suit::Joker, Card::Rank::Ace);
+        ASSERT_EQ(true, false);
+    }
+    catch (const std::invalid_argument& e)
+    {
+        ;
+    }
+}
+
 
 TEST(CardComparision, Equal)
 {
@@ -34,4 +63,12 @@ TEST(CardOutput, Simple)
     std::stringstream ss;
     ss << c;
     ASSERT_EQ(ss.str(), "Ace of Spades");
+}
+
+TEST(CardOutput, Joker)
+{
+    Card c = Card(Card::Suit::Joker, Card::Rank::Joker);
+    std::stringstream ss;
+    ss << c;
+    ASSERT_EQ(ss.str(), "Joker");
 }
