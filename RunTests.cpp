@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "TestCard.hpp"
+#include "TestCardHand.hpp"
 
 int main(int argc, char **argv)
 {

@@ -9,7 +9,7 @@ docker-build:
 docker-run:
 	docker run --rm -it -v $(PWD):/home -w /home shanghai
 
-RunTests: TestCard.hpp Card.hpp .PHONY
+RunTests: TestCard.hpp Card.hpp TestCardHand.hpp CardHand.hpp .PHONY
 	$(CXX) $(CXXFLAGS) $(GTESTFLAGS) RunTests.cpp -o RunTests
 
 test: RunTests
