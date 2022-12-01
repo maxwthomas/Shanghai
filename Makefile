@@ -12,6 +12,9 @@ docker-run:
 TestCard.o: TestCard.cpp Card.hpp .PHONY
 	$(CXX) $(CXXFLAGS) $(GTESTFLAGS) TestCard.cpp -o TestCard.o
 
+test: TestCard.o
+	./TestCard.o
+
 clean:
 	rm -f *.o
 
