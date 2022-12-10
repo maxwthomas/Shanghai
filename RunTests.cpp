@@ -4,6 +4,7 @@
 
 #include "TestCard.hpp"
 #include "TestCardHand.hpp"
+#include "TestCardStack.hpp"
 
 int main(int argc, char **argv)
 {
