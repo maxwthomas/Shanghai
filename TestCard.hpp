@@ -45,6 +45,23 @@ TEST(CardCreate, BadJoker)
 }
 
 
+TEST(CardCopy, Constructor)
+{
+    Card c1 = Card(Card::Suit::Spades, Card::Rank::Ace);
+    Card c2 = Card(c1);
+    ASSERT_EQ(c1, c2);
+}
+
+TEST(CardCopy, Assignment)
+{
+    Card c1 = Card(Card::Suit::Spades, Card::Rank::Ace);
+    Card c2 = Card(Card::Suit::Clubs, Card::Rank::Ace);
+    ASSERT_NE(c1, c2);
+    c2 = c1;
+    ASSERT_EQ(c1, c2);
+}
+
+
 TEST(CardComparision, Equal)
 {
     Card c1 = Card(Card::Suit::Spades, Card::Rank::Ace);
