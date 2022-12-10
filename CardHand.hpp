@@ -17,15 +17,15 @@ public:
         return cards.size();
     }
 
-    CardHand& add_card(const Card& rhs)
+    CardHand& add_card(const Card& c)
     {
-        cards.push_back(rhs);
+        cards.push_back(c);
         return *this;
     }
 
     Card remove_card(size_t g)
     {
-        // NOTE: This isn't perfect, would prefer to do a move rather than copy
+        // Have to make a copy since vector spot will be erased
         Card c = cards.at(g);
         cards.erase(cards.begin() + g);
         return c;
